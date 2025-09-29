@@ -1,5 +1,0 @@
-<!-- 创建段落语法为在文本间用一行或多行空白行进行分隔 -->
-Light Text Markup Language is best Markup Language.
-
-It combines the advantages of both HTML and Markdown.
-Simple and multifunctional. <!-- 因为这里没有空白行分隔,所以显示结果会是在同一段落 -->
