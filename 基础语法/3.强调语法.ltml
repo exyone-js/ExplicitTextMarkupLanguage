@@ -1,5 +1,0 @@
-<!-- 强调语法即粗体,斜体,下划线等.如果需要更多样式请使用高级语法中的style样式 -->
-This is **Bold Text**.
-And this one is $Italic Text$.
-Also,__Underline Text__ looks like this.
-<!-- 删除线并未在LTML中有对应语法,可以使用HTML语法进行补充,详见高级语法篇 -->
