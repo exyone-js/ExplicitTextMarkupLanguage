@@ -1,0 +1,688 @@
+<metadata>
+  title="Explicit Text Markup Language (ETML) 介绍文档"
+  author="Exyone"
+  date="2025-09-21"
+  version="v1.1.2"
+  description="这是一个详细介绍ETML语法的文档，帮助用户快速理解和使用这种显式标记语言。"
+</metadata>
+
+<style>
+  [important]="微软雅黑","#FF5733","14"
+  [example]="等宽字体","#333333","12"
+</style>
+
+<etml>
+# Explicit Text Markup Language (ETML) 介绍文档
+
+## 什么是ETML？
+ETML是一种显式标记语言，设计用于清晰、高效地格式化文本内容。它结合了明确的语法和强大的表达能力，使文档编写变得更加直观和可控。ETML的目标是提供一种更明确的方式来创建丰富的文档，同时保持接近完全替代HTML和CSS的能力。
+
+## 文档结构
+ETML文档由三个主要部分组成：
+
+### 1. 元数据部分
+元数据包含文档的基本信息，如标题、作者、日期等。
+
+<code lang="etml">
+<metadata>
+  title="文档标题"
+  author="作者名称"
+  date="日期"
+  version="版本号"
+  description="文档描述"
+</metadata>
+</code>
+
+### 2. 样式定义部分
+样式定义允许您创建自定义样式，可在文档中重复使用。
+
+<code lang="etml">
+<style>
+  [样式名称]="字体名称","RGB颜色","字号"
+  [important]="微软雅黑","#FF5733","14"
+</style>
+</code>
+
+### 3. 内容部分
+文档的主要内容放在`<etml>`标签内。
+
+<code lang="etml">
+<etml>
+  <!-- 这里是文档的主要内容 -->
+</etml>
+</code>
+
+## 文本格式化
+
+### 标题
+ETML支持六级标题，有两种语法形式：
+
+1. 使用不同数量的`#`符号表示（Markdown风格）：
+<code lang="etml">
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+</code>
+
+2. 使用HTML风格的标题标签：
+<code lang="etml">
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+<h3>三级标题</h3>
+<h4>四级标题</h4>
+<h5>五级标题</h5>
+<h6>六级标题</h6>
+</code>
+
+两种表示法通用，您可以根据个人偏好选择使用。
+
+### 文本样式
+ETML提供了多种文本样式选项，每种样式都有两种语法形式：
+
+#### 粗体文本
+<code lang="etml">
+**粗体文本** 或 <str>粗体文本</str>
+</code>
+
+#### 斜体文本
+<code lang="etml">
+$斜体文本$ 或 <em>斜体文本</em>
+</code>
+
+#### 下划线文本
+<code lang="etml">
+__下划线文本__ 或 <u>下划线文本</u>
+</code>
+
+#### 删除线文本
+<code lang="etml">
+~~删除线文本~~ 或 <del>删除线文本</del>
+</code>
+
+## 文本对齐
+ETML支持文本对齐方式，包括居中和右对齐：
+
+### 居中对齐
+只能使用xml格式：
+
+<code lang="etml">
+<center>这是居中对齐的文本</center>
+</code>
+
+### 右对齐
+只能使用xml格式：
+
+<code lang="etml">
+<right>这是右对齐的文本</right>
+</code>
+
+## 注释
+ETML支持两种类型的注释：
+
+### 单行注释
+<code lang="etml">
+<!-- 这是一个单行注释 -->
+</code>
+
+### 多行注释
+<code lang="etml">
+<comment>
+  这是一个多行注释
+  可以跨越多行内容
+  所有内容都不会被渲染
+</comment>
+</code>
+
+## 列表
+ETML支持多种类型的列表，包括无序列表、有序列表和待办事项列表。
+
+### 无序列表
+使用`--`开头表示无序列表项：
+
+<code lang="etml">
+-- 无序列表项1
+-- 无序列表项2
+-- 无序列表项3
+</code>
+
+### 有序列表
+使用数字加`-`开头表示有序列表项：
+
+<code lang="etml">
+1- 有序列表项1
+2- 有序列表项2
+3- 有序列表项3
+</code>
+
+### 待办事项列表
+使用`?`或`!`加`-`开头表示待办事项：
+
+<code lang="etml">
+?- 未完成事项
+!- 已完成事项
+</code>
+
+### 嵌套列表
+通过缩进（2个空格）实现列表嵌套：
+
+<code lang="etml">
+-- 主列表项1
+  -- 子列表项1
+  -- 子列表项2
+    -- 孙列表项1
+-- 主列表项2
+  1- 有序子列表项
+  !- 已完成的待办事项
+</code>
+
+## 样式应用
+在文档中应用之前定义的样式：
+
+<code lang="etml">
+[important]这是使用了important样式的文本[/important]这是普通文本
+</code>
+
+实际效果：[important]这是使用了important样式的文本[/important]这是普通文本
+
+## 转义字符
+使用反斜杠`\`可以转义ETML中的特殊字符，使其显示为普通文本：
+
+<code lang="etml">
+\# 这不是一个标题，而是显示为#号
+\*\*这不是粗体文本\*\*
+\\ 这显示为一个反斜杠
+</code>
+
+## 链接和邮箱
+
+### 链接
+创建超链接：
+
+<code lang="etml">
+->[链接文本](https://example.com)
+</code>
+
+### 邮箱地址
+创建可点击的邮箱地址：
+
+<code lang="etml">
+->(example@email.com)
+</code>
+
+## 图片和视频
+
+### 图片引用
+ETML支持引用本地和互联网中的图片：
+
+<code lang="etml">
+<img src="图片路径/URL" alt="图片描述" width="宽度" height="高度" align="对齐方式">
+</code>
+
+参数说明：
+- `src`：图片的本地路径或互联网URL
+- `alt`：图片无法显示时的替代文本
+- `width`和`height`：图片的宽度和高度（可选）
+- `align`：图片的对齐方式（left/center/right，可选）
+
+示例：
+<code lang="etml">
+<img src="https://example.com/image.jpg" alt="示例图片" width="300" height="200">
+<img src="本地图片.jpg" alt="本地图片示例" align="center">
+</code>
+
+### 视频嵌入
+ETML支持嵌入本地和互联网中的视频：
+
+<code lang="etml">
+<video src="视频路径/URL" controls width="宽度" height="高度">
+</code>
+
+参数说明：
+- `src`：视频的本地路径或互联网URL
+- `controls`：显示视频控制条
+- `width`和`height`：视频的宽度和高度（可选）
+
+示例：
+<code lang="etml">
+<video src="https://example.com/video.mp4" controls width="640" height="360">
+<video src="本地视频.mp4" controls>
+</code>
+
+## Emoji支持
+ETML支持在文档中使用emoji表情符号：
+
+<code lang="etml">
+这是一个笑脸表情 :smile: 
+这是一个竖起大拇指表情 :thumbsup: 
+这是一个心形表情 :heart: 
+</code>
+
+您可以使用标准的emoji短代码来插入各种表情符号，LTML会自动将它们转换为对应的emoji图形。
+
+## 代码块
+ETML支持代码块，可以指定编程语言：
+
+### 基本代码块
+<code lang="etml">
+<code lang="python">
+def hello():
+    print("Hello, ETML!")
+</code>
+</code>
+
+在代码块内部，ETML的特殊语法将被视为普通文本，不会被解析：
+
+<code lang="etml">
+<code lang="html">
+<!-- 这在代码块中不会被视为注释 -->
+<span>**这不会变成粗体**</span>
+</code>
+</code>
+
+### 内嵌TypeScript代码
+ETML支持内嵌TypeScript代码，并可以指定是否需要编译和执行：
+
+<code lang="etml">
+<typescript compile="true" execute="false">
+// TypeScript代码示例
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+const result = add(5, 3);
+console.log(`结果: ${result}`);
+</typescript>
+</code>
+
+参数说明：
+- `compile="true"` 表示需要编译此TypeScript代码
+- `execute="false"` 表示编译后不自动执行
+- 可以根据需要调整这两个参数的值
+
+## TypeScript作为脚本语言
+ETML支持使用TypeScript完全替代JavaScript作为脚本语言，可以在文档中直接嵌入TypeScript代码来实现交互功能：
+
+<code lang="etml">
+<script type="typescript">
+// 这里可以写任何TypeScript代码
+class Calculator {
+    add(a: number, b: number): number {
+        return a + b;
+    }
+    
+    subtract(a: number, b: number): number {
+        return a - b;
+    }
+}
+
+// 可以直接与页面元素交互
+function setupCalculator() {
+    const calc = new Calculator();
+    console.log("计算器已初始化");
+    // 这里可以添加更多交互逻辑
+}
+
+// 页面加载完成后执行
+window.addEventListener('DOMContentLoaded', () => {
+    setupCalculator();
+});
+</script>
+</code>
+
+这使得ETML文档可以包含完整的程序逻辑，实现复杂的交互功能，而无需编写JavaScript代码。
+
+## 数学公式
+ETML支持数学公式的渲染，使用`$$`符号包裹数学表达式：
+
+### 行内公式
+<code lang="etml">
+勾股定理可以表示为：$$a^2 + b^2 = c^2$$，其中c是斜边。
+</code>
+
+### 块级公式
+<code lang="etml">
+$$
+E = mc^2
+$$
+</code>
+
+更复杂的数学公式示例：
+<code lang="etml">
+$$
+\int_{a}^{b} f(x) dx = F(b) - F(a)
+$$
+</code>
+
+ETML使用LaTeX语法来表示数学公式，支持各种数学符号和表达式。
+
+## 简易表格
+ETML支持类似于Excel的简易表格功能，使用`<table>`标签创建：
+
+<code lang="etml">
+<table header="true" border="true">
+| 姓名 | 年龄 | 职业 |
+| 张三 | 25 | 工程师 |
+| 李四 | 30 | 设计师 |
+| 王五 | 35 | 产品经理 |
+</table>
+</code>
+
+参数说明：
+- `header="true"` 表示第一行为表头
+- `border="true"` 表示显示表格边框
+
+## 表格合并单元格
+ETML支持简洁的表格合并单元格语法：
+
+### 水平合并（横向跨列）
+使用`*数字`表示水平合并的列数：
+
+<code lang="etml">
+<table header="true" border="true">
+| 标题行 | | |
+| 合并单元格*2 | |
+| 正常单元格 | 正常单元格 | 正常单元格 |
+</table>
+</code>
+
+说明：`合并单元格*2` 表示该单元格水平合并2列
+
+### 垂直合并（纵向跨行）
+使用`^数字`表示垂直合并的行数：
+
+<code lang="etml">
+<table header="true" border="true">
+| 标题行 | 标题行 | 标题行 |
+| 合并单元格^2 | 正常单元格 | 正常单元格 |
+| | 正常单元格 | 正常单元格 |
+</table>
+</code>
+
+说明：`合并单元格^2` 表示该单元格垂直合并2行
+
+### 复杂合并示例
+可以组合使用水平和垂直合并：
+
+<code lang="etml">
+<table header="true" border="true">
+| 表头1*3 |
+| 表头2 | 表头3*2 |
+| 内容1^2 | 内容2 | 内容3 |
+| | 内容4 | 内容5 |
+</table>
+</code>
+
+## 布局和容器
+ETML支持使用容器元素来组织和布局内容，类似于HTML中的div元素：
+
+<code lang="etml">
+<container width="80%" margin="auto" padding="20px" background="#f0f0f0">
+这是一个容器，用于组织内容。容器可以设置宽度、边距、内边距和背景色等样式属性。
+</container>
+</code>
+
+这使得ETML可以实现更复杂的页面布局，进一步接近HTML和CSS的能力。
+
+## 最佳实践
+
+1. **保持清晰**：ETML的优势在于明确性，尽量使用表意清晰的语法形式
+2. **合理使用样式**：为文档中重要内容定义和使用样式
+3. **注释清晰**：使用注释解释复杂或重要的内容
+4. **适当嵌套**：利用列表嵌套组织复杂内容的结构
+5. **选择合适的表示法**：根据需求选择Markdown风格或HTML风格的语法
+6. **利用TypeScript**：使用TypeScript代替JavaScript实现交互功能
+
+## 示例文档
+以下是一个完整的ETML文档示例，展示了上述所有功能的实际应用：
+
+<code lang="etml">
+<metadata>
+  title="我的第一个ETML文档"
+  author="张三"
+  date="2025-09-21"
+  version="v1.0"
+  description="这是一个演示ETML功能的示例文档"
+</metadata>
+
+<style>
+  [highlight]="微软雅黑","#FF5733","14"
+  [note]="宋体","#4A90E2","12"
+</style>
+
+<etml>
+# 示例文档
+
+## 简介
+这是一个[highlight]使用ETML编写的示例文档[/highlight]，展示了这种显式标记语言的基本功能。:sparkles:
+
+## 主要特点
+-- 清晰明确的语法
+-- 灵活的样式系统
+-- 支持各种文本格式化选项
+-- 可以创建列表、链接和代码块
+-- 支持数学公式和表格
+-- 可以内嵌TypeScript代码
+-- 支持图片和视频嵌入
+-- 强大的表格颜色控制功能
+-- 完全替代HTML和CSS的能力
+
+## 待办事项
+?- 完善文档内容
+!- 学习ETML语法
+?- 创建更多示例
+
+## 文本对齐示例
+<center>这段文本是居中对齐的</center>
+<right>这段文本是右对齐的</right>
+
+## 图片和视频示例
+<img src="https://example.com/sample.jpg" alt="示例图片" width="300" align="center">
+
+<video src="https://example.com/sample.mp4" controls width="640" height="360">
+
+## 数学公式示例
+勾股定理：$$a^2 + b^2 = c^2$$
+
+质能方程：
+$$
+E = mc^2
+$$
+
+## 数据表格示例
+<display>用户信息表</display>
+<table header="true" border="true">
+| 姓名 | 年龄 | 部门 |
+| 张三 | 28 | 开发部 |
+| 李四 | 32 | 设计部 |
+| 王五 | 45 | 管理层 |
+</table>
+
+## 复杂表格示例
+<display>项目进度表</display>
+<table header="true" border="true">
+| 项目信息*3 |
+| 项目名称 | 负责人 | 完成进度 |
+| 网站开发 | 张三^2 | 80% |
+| 移动应用 | | 60% |
+</table>
+
+## TypeScript代码示例
+下面是一个简单的TypeScript代码示例：
+
+<typescript compile="true" execute="false">
+function calculateSum(numbers: number[]): number {
+    return numbers.reduce((sum, current) => sum + current, 0);
+}
+
+const scores = [85, 90, 78, 92, 88];
+const totalScore = calculateSum(scores);
+const averageScore = totalScore / scores.length;
+
+console.log(`总分: ${totalScore}`);
+console.log(`平均分: ${averageScore.toFixed(2)}`);
+</typescript>
+
+## 交互功能示例
+<script type="typescript">
+// 简单的计算器功能
+class SimpleCalculator {
+    add(a: number, b: number): number {
+        return a + b;
+    }
+    
+    subtract(a: number, b: number): number {
+        return a - b;
+    }
+    
+    multiply(a: number, b: number): number {
+        return a * b;
+    }
+    
+    divide(a: number, b: number): number {
+        if (b === 0) {
+            throw new Error("除数不能为零");
+        }
+        return a / b;
+    }
+}
+
+// 页面加载完成后初始化计算器
+window.addEventListener('DOMContentLoaded', () => {
+    const calc = new SimpleCalculator();
+    console.log("计算器已加载，可以通过控制台使用");
+    // 在实际应用中，这里可以添加更多与页面元素交互的代码
+});
+</script>
+
+## 联系方式
+如有问题，请联系：->(zhangsan@example.com)
+</etml>
+</code>
+
+## 文件后缀名
+ETML文档支持两种文件后缀名：
+
+1. **.etml** - 完整的ETML文件扩展名，用于包含所有功能的文档
+2. **.etm** - 简化的ETML文件扩展名，功能上与.etml完全相同，只是为了方便用户输入而提供的简短形式
+
+两种后缀名的文件在功能和处理方式上没有任何区别，您可以根据个人偏好选择使用。
+
+## 高级功能
+为了使ETML更加强大，最新版本增加了以下高级功能：
+
+### 1. 主题系统
+ETML现在支持完整的主题系统，可以一键切换整个文档的外观：
+
+<code lang="etml">
+<theme name="dark">
+  [background]="#1e1e1e"
+  [text]="#d4d4d4"
+  [heading]="#569cd6"
+  [code]="#ce9178"
+</theme>
+
+<apply-theme name="dark" />
+</code>
+
+### 2. 响应式设计
+ETML现在支持响应式布局，可以根据不同屏幕尺寸自动调整内容显示：
+
+<code lang="etml">
+<responsive>
+  <desktop>
+    <!-- 桌面端显示内容 -->
+  </desktop>
+  <tablet>
+    <!-- 平板端显示内容 -->
+  </tablet>
+  <mobile>
+    <!-- 移动端显示内容 -->
+  </mobile>
+</responsive>
+</code>
+
+### 3. 图表功能
+ETML新增了内置的图表功能，可以直接在文档中创建各种数据可视化图表：
+
+<code lang="etml">
+<chart type="bar" title="月度销售额">
+  <data labels="一月,二月,三月,四月,五月">
+    <series name="2025年" values="120, 180, 150, 210, 240" />
+    <series name="2024年" values="100, 150, 130, 190, 200" />
+  </data>
+</chart>
+</code>
+
+支持的图表类型包括：柱状图(bar)、折线图(line)、饼图(pie)、散点图(scatter)、雷达图(radar)等。
+
+### 4. 组件系统
+ETML现在支持可复用组件，提高文档编写效率：
+
+<code lang="etml">
+<component name="card" params="title,content">
+  <container background="#f5f5f5" padding="15px" border-radius="5px">
+    <h3>{title}</h3>
+    <p>{content}</p>
+  </container>
+</component>
+
+<!-- 使用组件 -->
+<use-component name="card" title="产品介绍" content="这是一款革命性的新产品" />
+</code>
+
+### 5. 导出功能
+ETML新增了导出功能，可以将文档导出为多种格式：
+
+<code lang="etml">
+<export format="pdf" filename="document.pdf" />
+<export format="html" filename="document.html" />
+<export format="markdown" filename="document.md" />
+</code>
+
+支持的导出格式包括：PDF、HTML、Markdown、Word(.docx)和纯文本(.txt)。
+
+### 6. 表格颜色控制
+ETML新增了强大的表格颜色控制功能，可以为表格的不同部分设置颜色：
+
+<code lang="etml">
+<table header="true" border="true" 
+       header-bg-color="#4CAF50" header-text-color="white" 
+       row-odd-bg-color="#f2f2f2" row-even-bg-color="#ffffff" 
+       border-color="#ddd">
+| 产品名称 | 价格 | 库存 |
+| 手机 | 2999 | 100 |
+| 平板电脑 | 3999 | 50 |
+| 笔记本电脑 | 5999 | 30 |
+</table>
+</code>
+
+表格颜色控制参数说明：
+- `header-bg-color`：表头背景颜色
+- `header-text-color`：表头文字颜色
+- `row-odd-bg-color`：奇数行背景颜色
+- `row-even-bg-color`：偶数行背景颜色
+- `border-color`：边框颜色
+
+您还可以为特定单元格设置颜色：
+
+<code lang="etml">
+<table header="true" border="true">
+| 学生姓名 | 数学 | 语文 | 英语 |
+| 张三 | [bg-color="#4CAF50",text-color="white"]95[/bg-color] | 88 | 92 |
+| 李四 | 78 | [bg-color="#ff9800",text-color="white"]90[/bg-color] | 85 |
+| 王五 | 82 | 76 | [bg-color="#2196F3",text-color="white"]94[/bg-color] |
+</table>
+</code>
+
+## 总结
+ETML是一种清晰而强大的显式标记语言，通过持续的功能增强，正在逐步实现完全替代HTML和CSS的目标。它提供了丰富的文本格式化选项、图片视频嵌入、数学公式渲染、表格处理、TypeScript代码集成等功能，同时保持了语法的明确性和易用性。
+
+最新版本的ETML增加了主题系统、响应式设计、图表功能、组件系统、导出功能和强大的表格颜色控制功能等高级特性，使其更加强大和灵活。同时，ETML支持.etml和.etm两种文件后缀名，方便用户使用。
+
+通过本介绍文档，您应该已经了解了ETML的基本语法和用法，包括标题的两种表示法、文本居中和右对齐、图片视频引用、emoji支持、以及使用TypeScript替代JavaScript的功能。特别地，您还学习了ETML强大的表格颜色控制功能，可以让您的表格更加美观和专业。现在，您可以开始使用ETML创建自己的文档和应用了！
+
+[important]祝您使用愉快！:thumbsup:[/important]
+</etml>
